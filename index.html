@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026跨年祝福</title>
+    <title>2026跨年快乐 | 雨虹</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- 导入楷书/行楷字体 -->
-    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=ZCOOL+XiaoWei&family=ZCOOL+KuaiLe&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <!-- 导入更多中文字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=ZCOOL+XiaoWei&family=ZCOOL+KuaiLe&family=Noto+Serif+SC:wght@400;700;900&family=ZCOOL+QingKe+HuangYou&family=Long+Cang&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -15,11 +15,11 @@
         }
         
         body {
-            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            font-family: 'Noto Serif SC', 'Microsoft YaHei', sans-serif;
             background-color: #002FA7; /* 克莱因蓝 */
             color: #FFFFFF;
             min-height: 100vh;
-            overflow: hidden;
+            overflow-x: hidden;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -28,29 +28,27 @@
             position: relative;
         }
         
-        /* 背景大笑表情 */
-        .emoji-bg {
-            position: absolute;
-            font-size: 5rem;
-            opacity: 0.15;
+        /* 动态星星背景 */
+        .star-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
             z-index: 1;
-            animation: float 20s infinite linear;
         }
         
-        /* 生成多个背景表情 */
-        .emoji-bg:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
-        .emoji-bg:nth-child(2) { top: 20%; right: 10%; animation-delay: 2s; font-size: 4rem; }
-        .emoji-bg:nth-child(3) { bottom: 30%; left: 15%; animation-delay: 4s; font-size: 6rem; }
-        .emoji-bg:nth-child(4) { bottom: 20%; right: 5%; animation-delay: 6s; }
-        .emoji-bg:nth-child(5) { top: 50%; left: 10%; animation-delay: 8s; font-size: 3.5rem; }
-        .emoji-bg:nth-child(6) { top: 15%; left: 50%; animation-delay: 10s; font-size: 4.5rem; }
+        .star {
+            position: absolute;
+            background-color: #FFD700;
+            border-radius: 50%;
+            animation: twinkle 3s infinite ease-in-out;
+        }
         
-        @keyframes float {
-            0% { transform: translateY(0) rotate(0deg); }
-            25% { transform: translateY(-20px) rotate(5deg); }
-            50% { transform: translateY(0) rotate(0deg); }
-            75% { transform: translateY(20px) rotate(-5deg); }
-            100% { transform: translateY(0) rotate(0deg); }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
         }
         
         .container {
@@ -66,201 +64,238 @@
         }
         
         .header h1 {
-            font-size: 2.8rem;
+            font-size: 3rem;
             margin-bottom: 15px;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
-            color: #FFD700;
-            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(255, 165, 0, 0.8);
+            color: #FFA500; /* 橙色 */
+            letter-spacing: 3px;
+            font-family: 'ZCOOL KuaiLe', cursive;
+            animation: glow 2s infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #FFA500, 0 0 20px #FFA500; }
+            to { text-shadow: 0 0 20px #FF8C00, 0 0 30px #FF8C00, 0 0 40px #FF8C00; }
         }
         
         .countdown-container {
             background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(8px);
-            border-radius: 20px;
+            backdrop-filter: blur(12px);
+            border-radius: 25px;
             padding: 30px 20px;
             margin: 20px auto;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 2px solid rgba(255, 165, 0, 0.3);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
             width: 90%;
             max-width: 500px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .countdown-container::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #FF8C00, #FFD700, #00BFFF, #32CD32);
+            z-index: -1;
+            border-radius: 27px;
+            animation: border-glow 4s linear infinite;
+        }
+        
+        @keyframes border-glow {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
         }
         
         .countdown-title {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             margin-bottom: 20px;
             color: #FFD700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
         }
         
         .countdown-number {
             font-size: 8rem;
-            font-weight: bold;
-            text-shadow: 0 0 30px rgba(255, 215, 0, 0.9);
-            color: #FFD700;
+            font-weight: 900;
+            text-shadow: 0 0 40px rgba(255, 140, 0, 0.9);
+            color: #FF8C00;
             height: 150px;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.5s ease;
+            font-family: 'ZCOOL QingKe HuangYou', cursive;
         }
         
         .blessing-container {
             margin-top: 40px;
-            padding: 25px;
+            padding: 30px 25px;
             background: rgba(255, 255, 255, 0.15);
-            border-radius: 15px;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 165, 0, 0.3);
             display: none;
-            animation: fadeIn 1.5s ease;
+            animation: fadeInUp 1.5s ease;
+            position: relative;
+            overflow: hidden;
         }
         
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
             to { opacity: 1; transform: translateY(0); }
         }
         
-        .blessing-text {
-            font-size: 2rem;
-            line-height: 1.5;
-            color: #FFFFFF;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-        }
-        
-        /* 亲爱的姜老师 - 橙色 #FF9800，添加四叶草 */
-        .blessing-text .name {
-            color: #FF9800;
-            font-weight: bold;
-            font-size: 2.2rem;
-            text-shadow: 0 0 8px rgba(255, 152, 0, 0.5);
-        }
-        
-        .clover {
-            font-size: 2.2rem;
-            margin-left: 10px;
-            display: inline-block;
-            animation: gentleShake 2s infinite;
-        }
-        
-        @keyframes gentleShake {
-            0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(10deg); }
-            75% { transform: rotate(-10deg); }
-        }
-        
-        /* 2026年跨年快乐！ - 大红色 #FF0000 */
-        .blessing-text .year {
-            color: #FF0000;
-            font-weight: bold;
-            text-shadow: 0 0 12px rgba(255, 0, 0, 0.6);
-            font-size: 2.3rem;
-            margin: 10px 0;
-            font-family: 'ZCOOL KuaiLe', cursive;
-        }
-        
-        /* 平安喜乐，诸事顺遂 - 分行显示，楷书/行楷字体 */
-        .blessing-words {
-            color: #F5F5DC;
-            font-weight: bold;
-            font-size: 2.6rem;
-            margin: 20px 0;
-            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
-            letter-spacing: 2px;
-            padding: 15px 0;
-            position: relative;
-            line-height: 1.8;
-        }
-        
-        /* 平安喜乐 - 第一行 - 楷书/行楷字体 */
-        .blessing-line1 {
-            font-family: 'Noto Serif SC', 'Ma Shan Zheng', 'STKaiti', 'KaiTi', 'Microsoft YaHei', serif;
-            display: block;
-            margin-bottom: 5px;
-            position: relative;
-            font-weight: 700;
-        }
-        
-        /* 诸事顺遂 - 第二行 - 楷书/行楷字体 */
-        .blessing-line2 {
-            font-family: 'Noto Serif SC', 'Ma Shan Zheng', 'STKaiti', 'KaiTi', 'Microsoft YaHei', serif;
-            display: block;
-            position: relative;
-            font-weight: 700;
-        }
-        
-        /* 楷书字体装饰效果 */
-        .blessing-line1::before,
-        .blessing-line2::before {
+        .blessing-container::before {
             content: '';
             position: absolute;
-            bottom: -3px;
-            left: 15%;
-            width: 70%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.5), transparent);
-            opacity: 0.7;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #FF8C00, #FFD700, #00BFFF, #32CD32);
+            animation: rainbow-line 3s linear infinite;
         }
         
-        .victory {
-            font-size: 1.8rem;
-            margin-left: 12px;
-            display: inline-block;
-            animation: bounce 1.5s infinite;
-            vertical-align: middle;
+        @keyframes rainbow-line {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        
+        .blessing-text {
+            font-size: 2.2rem;
+            line-height: 1.6;
+            color: #FFFFFF;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+        }
+        
+        /* 2026跨年快乐！ - 暖橙色，加大效果 */
+        .blessing-line1 {
+            color: #FF8C00;
+            font-weight: 900;
+            font-size: 2.8rem;
+            text-shadow: 0 0 20px rgba(255, 140, 0, 0.7);
+            display: block;
+            margin: 15px 0;
+            font-family: 'ZCOOL KuaiLe', cursive;
+            animation: bounce 2s infinite alternate;
         }
         
         @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
         }
         
-        /* 两侧装饰 */
-        .blessing-words::before,
-        .blessing-words::after {
-            content: "❖";
-            color: #FFD700;
-            margin: 0 10px;
-            font-size: 1.8rem;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        
-        .blessing-words::before {
-            left: -15px;
-        }
-        
-        .blessing-words::after {
-            right: -15px;
-        }
-        
-        .emoji-row {
-            margin-top: 20px;
+        /* 四时平安[⭐] - 天蓝色 */
+        .blessing-line2 {
+            color: #00BFFF;
+            font-weight: 700;
             font-size: 2.5rem;
-            letter-spacing: 15px;
+            text-shadow: 0 0 15px rgba(0, 191, 255, 0.6);
+            display: block;
+            margin: 15px 0;
+            font-family: 'Ma Shan Zheng', cursive;
+            position: relative;
         }
         
-        /* 爱心改为红色 */
-        .emoji-row .fa-heart {
-            color: #FF0000;
-            text-shadow: 0 0 12px rgba(255, 0, 0, 0.8);
+        .blessing-line2 .star-icon {
+            color: #FFD700;
+            font-size: 2.3rem;
+            margin-left: 15px;
+            display: inline-block;
+            animation: spin 5s infinite linear;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* 万事如意[❤] - 浅绿色 */
+        .blessing-line3 {
+            color: #32CD32;
+            font-weight: 700;
+            font-size: 2.5rem;
+            text-shadow: 0 0 15px rgba(50, 205, 50, 0.6);
+            display: block;
+            margin: 15px 0;
+            font-family: 'Long Cang', cursive;
+            position: relative;
+        }
+        
+        .blessing-line3 .heart-icon {
+            color: #FF1493;
+            font-size: 2.3rem;
+            margin-left: 15px;
+            display: inline-block;
             animation: heartbeat 1.2s infinite;
         }
         
         @keyframes heartbeat {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+            50% { transform: scale(1.3); }
         }
         
-        /* 太阳花保持金色 */
-        .emoji-row .fa-sun {
+        /* 越来越好[🎉] - 亮黄色 */
+        .blessing-line4 {
             color: #FFD700;
-            text-shadow: 0 0 12px rgba(255, 215, 0, 0.9);
-            animation: rotateSun 10s infinite linear;
+            font-weight: 700;
+            font-size: 2.5rem;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+            display: block;
+            margin: 15px 0;
+            font-family: 'ZCOOL XiaoWei', serif;
+            position: relative;
         }
         
-        @keyframes rotateSun {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .blessing-line4 .party-icon {
+            font-size: 2.3rem;
+            margin-left: 15px;
+            display: inline-block;
+            animation: party-pop 1.5s infinite;
+        }
+        
+        @keyframes party-pop {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-10px) rotate(10deg); }
+            50% { transform: translateY(0) rotate(0deg); }
+            75% { transform: translateY(-5px) rotate(-10deg); }
+        }
+        
+        /* 每行之间的分隔装饰 */
+        .blessing-line2::before,
+        .blessing-line3::before,
+        .blessing-line4::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 25%;
+            width: 50%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+        }
+        
+        .emoji-row {
+            margin-top: 30px;
+            font-size: 2.8rem;
+            letter-spacing: 20px;
+        }
+        
+        .emoji-row i {
+            display: inline-block;
+            animation: float 6s infinite ease-in-out;
+        }
+        
+        .emoji-row i:nth-child(1) { animation-delay: 0s; color: #FF8C00; }
+        .emoji-row i:nth-child(2) { animation-delay: 1s; color: #00BFFF; }
+        .emoji-row i:nth-child(3) { animation-delay: 2s; color: #32CD32; }
+        .emoji-row i:nth-child(4) { animation-delay: 3s; color: #FFD700; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
         }
         
         /* 落款样式 */
@@ -269,43 +304,67 @@
             padding-top: 15px;
             border-top: 1px dashed rgba(255, 255, 255, 0.3);
             font-family: 'ZCOOL XiaoWei', serif;
-            font-size: 1.8rem;
-            color: #E0E0E0;
-            letter-spacing: 1px;
+            font-size: 2rem;
+            color: #FFD700;
+            letter-spacing: 2px;
             position: relative;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
         }
         
-        .signature .black-star {
-            color: #000000;
-            font-size: 1.6rem;
-            margin-left: 8px;
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+        .signature .victory {
+            color: #00BFFF;
+            font-size: 1.8rem;
+            margin-left: 10px;
             display: inline-block;
-            animation: twinkle 2s infinite;
+            animation: victory-move 2s infinite;
         }
         
-        @keyframes twinkle {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+        @keyframes victory-move {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(10deg); }
+            75% { transform: rotate(-10deg); }
         }
         
         .fireworks-btn {
-            margin-top: 30px;
-            background: rgba(255, 215, 0, 0.2);
-            border: 2px solid #FFD700;
-            color: #FFD700;
-            padding: 12px 30px;
-            font-size: 1.2rem;
+            margin-top: 40px;
+            background: linear-gradient(45deg, #FF8C00, #FFD700);
+            border: none;
+            color: #002FA7;
+            padding: 15px 40px;
+            font-size: 1.3rem;
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+            box-shadow: 0 10px 20px rgba(255, 140, 0, 0.4);
             display: inline-block;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+            z-index: 10;
+        }
+        
+        .fireworks-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.7s;
+        }
+        
+        .fireworks-btn:hover::before {
+            left: 100%;
         }
         
         .fireworks-btn:hover {
-            background: rgba(255, 215, 0, 0.3);
-            transform: translateY(-3px);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(255, 140, 0, 0.6);
+        }
+        
+        .fireworks-btn i {
+            margin-right: 10px;
         }
         
         /* 烟花画布 */
@@ -319,10 +378,29 @@
             z-index: 5;
         }
         
+        /* 雪花效果 */
+        .snowflakes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+        
+        .snowflake {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            filter: blur(1px);
+        }
+        
         /* 响应式调整 */
         @media (max-width: 768px) {
             .header h1 {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
             
             .countdown-number {
@@ -331,178 +409,129 @@
             }
             
             .blessing-text {
-                font-size: 1.6rem;
-            }
-            
-            .blessing-text .name {
                 font-size: 1.8rem;
             }
             
-            .clover {
+            .blessing-line1 {
+                font-size: 2.2rem;
+            }
+            
+            .blessing-line2,
+            .blessing-line3,
+            .blessing-line4 {
+                font-size: 2rem;
+            }
+            
+            .blessing-line2 .star-icon,
+            .blessing-line3 .heart-icon,
+            .blessing-line4 .party-icon {
                 font-size: 1.8rem;
-            }
-            
-            .blessing-text .year {
-                font-size: 1.9rem;
-            }
-            
-            .blessing-words {
-                font-size: 2rem;
-            }
-            
-            .blessing-line1,
-            .blessing-line2 {
-                font-size: 2rem;
-            }
-            
-            .victory {
-                font-size: 1.4rem;
-            }
-            
-            .blessing-words::before,
-            .blessing-words::after {
-                font-size: 1.4rem;
-            }
-            
-            .blessing-words::before {
-                left: -10px;
-            }
-            
-            .blessing-words::after {
-                right: -10px;
             }
             
             .signature {
+                font-size: 1.6rem;
+            }
+            
+            .signature .victory {
                 font-size: 1.5rem;
             }
             
-            .signature .black-star {
-                font-size: 1.4rem;
-            }
-            
             .emoji-row {
-                font-size: 2rem;
-                letter-spacing: 10px;
-            }
-            
-            .emoji-bg {
-                font-size: 3.5rem;
+                font-size: 2.2rem;
+                letter-spacing: 15px;
             }
         }
         
         @media (max-width: 480px) {
             .header h1 {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
             
             .countdown-number {
-                font-size: 4.5rem;
+                font-size: 5rem;
                 height: 100px;
             }
             
             .blessing-text {
-                font-size: 1.3rem;
-            }
-            
-            .blessing-text .name {
                 font-size: 1.5rem;
             }
             
-            .clover {
-                font-size: 1.5rem;
+            .blessing-line1 {
+                font-size: 1.8rem;
             }
             
-            .blessing-text .year {
+            .blessing-line2,
+            .blessing-line3,
+            .blessing-line4 {
                 font-size: 1.6rem;
             }
             
-            .blessing-words {
-                font-size: 1.7rem;
-            }
-            
-            .blessing-line1,
-            .blessing-line2 {
-                font-size: 1.7rem;
-            }
-            
-            .victory {
-                font-size: 1.1rem;
-            }
-            
-            .blessing-words::before,
-            .blessing-words::after {
-                font-size: 1.2rem;
-            }
-            
-            .blessing-words::before {
-                left: -8px;
-            }
-            
-            .blessing-words::after {
-                right: -8px;
+            .blessing-line2 .star-icon,
+            .blessing-line3 .heart-icon,
+            .blessing-line4 .party-icon {
+                font-size: 1.5rem;
             }
             
             .signature {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
             }
             
-            .signature .black-star {
-                font-size: 1.1rem;
+            .signature .victory {
+                font-size: 1.2rem;
             }
             
             .emoji-row {
                 font-size: 1.8rem;
-                letter-spacing: 8px;
+                letter-spacing: 10px;
             }
             
-            .emoji-bg {
-                font-size: 2.5rem;
+            .fireworks-btn {
+                padding: 12px 30px;
+                font-size: 1.1rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- 背景大笑表情 -->
-    <div class="emoji-bg">😄</div>
-    <div class="emoji-bg">😄</div>
-    <div class="emoji-bg">😄</div>
-    <div class="emoji-bg">😄</div>
-    <div class="emoji-bg">😄</div>
-    <div class="emoji-bg">😄</div>
+    <!-- 动态星星背景 -->
+    <div class="star-bg" id="star-bg"></div>
+    
+    <!-- 雪花效果 -->
+    <div class="snowflakes" id="snowflakes"></div>
     
     <!-- 烟花画布 -->
     <canvas id="fireworks-canvas"></canvas>
     
     <div class="container">
         <div class="header">
-            <h1><i class="fas fa-star"></i> 2026跨年倒计时 <i class="fas fa-star"></i></h1>
+            <h1><i class="fas fa-star-of-david"></i> 2026跨年倒计时 <i class="fas fa-star-of-david"></i></h1>
         </div>
         
         <div class="countdown-container">
-            <div class="countdown-title">倒计时开始</div>
+            <div class="countdown-title">新年倒计时开始</div>
             <div class="countdown-number" id="countdown">6</div>
             
             <div class="blessing-container" id="blessing">
                 <div class="blessing-text">
-                    <span class="name">亲爱的姜老师</span><span class="clover">🍀</span><br>
-                    <span class="year">2026年跨年快乐！</span>
-                    <div class="blessing-words">
-                        <span class="blessing-line1">平安喜乐</span>
-                        <span class="blessing-line2">诸事顺遂<span class="victory">[耶]✌</span></span>
-                    </div>
+                    <span class="blessing-line1">2026跨年快乐！</span>
+                    <span class="blessing-line2">四时平安<span class="star-icon">⭐</span></span>
+                    <span class="blessing-line3">万事如意<span class="heart-icon">❤</span></span>
+                    <span class="blessing-line4">越来越好<span class="party-icon">🎉</span></span>
                 </div>
                 <div class="emoji-row">
-                    <i class="fas fa-heart"></i>
                     <i class="fas fa-sun"></i>
+                    <i class="fas fa-cloud"></i>
+                    <i class="fas fa-leaf"></i>
+                    <i class="fas fa-fire"></i>
                 </div>
                 <div class="signature">
-                    --您坚定不移滴姜丝~<span class="black-star">✦</span>
+                    --雨虹<span class="victory">✌</span>
                 </div>
             </div>
         </div>
         
         <button class="fireworks-btn" id="fireworks-btn">
-            <i class="fas fa-fire"></i> 绽放更多烟花
+            <i class="fas fa-fireworks"></i> 绽放新年烟花
         </button>
     </div>
 
@@ -511,6 +540,70 @@
         const countdownEl = document.getElementById('countdown');
         const blessingEl = document.getElementById('blessing');
         const fireworksBtn = document.getElementById('fireworks-btn');
+        const starBg = document.getElementById('star-bg');
+        const snowflakesContainer = document.getElementById('snowflakes');
+        
+        // 创建星星背景
+        function createStarBackground() {
+            for (let i = 0; i < 150; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                // 随机位置和大小
+                const size = Math.random() * 3 + 1;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                
+                // 随机动画延迟
+                star.style.animationDelay = `${Math.random() * 3}s`;
+                
+                starBg.appendChild(star);
+            }
+        }
+        
+        // 创建雪花效果
+        function createSnowflakes() {
+            for (let i = 0; i < 80; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.classList.add('snowflake');
+                
+                // 随机大小
+                const size = Math.random() * 5 + 2;
+                snowflake.style.width = `${size}px`;
+                snowflake.style.height = `${size}px`;
+                
+                // 随机起始位置
+                snowflake.style.left = `${Math.random() * 100}%`;
+                snowflake.style.top = `${Math.random() * 100}%`;
+                
+                // 随机透明度
+                snowflake.style.opacity = Math.random() * 0.7 + 0.3;
+                
+                // 随机动画
+                const duration = Math.random() * 10 + 10;
+                const delay = Math.random() * 5;
+                snowflake.style.animation = `fall ${duration}s linear ${delay}s infinite`;
+                
+                // 添加到容器
+                snowflakesContainer.appendChild(snowflake);
+            }
+        }
+        
+        // 雪花下落动画
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes fall {
+                0% {
+                    transform: translateY(-100px) rotate(0deg);
+                }
+                100% {
+                    transform: translateY(calc(100vh + 100px)) rotate(360deg);
+                }
+            }
+        `;
+        document.head.appendChild(style);
         
         // 烟花画布设置
         const canvas = document.getElementById('fireworks-canvas');
@@ -533,14 +626,15 @@
         let isCountdownActive = true;
         let countdownValue = 6;
         
-        // 喜庆的颜色数组
+        // 暖色调颜色数组
         const colors = [
+            '#FF8C00', // 深橙色
+            '#FFA500', // 橙色
             '#FFD700', // 金色
-            '#FF4081', // 粉色
-            '#FF9800', // 橙色
-            '#4CAF50', // 绿色
-            '#2196F3', // 蓝色
-            '#FFFFFF'  // 白色
+            '#00BFFF', // 天蓝色
+            '#32CD32', // 浅绿色
+            '#FF1493', // 深粉色
+            '#FF69B4'  // 热粉色
         ];
         
         // 粒子类
@@ -550,23 +644,26 @@
                 this.y = y;
                 this.color = color;
                 this.velocity = {
-                    x: (Math.random() - 0.5) * 12,
-                    y: (Math.random() - 0.5) * 12
+                    x: (Math.random() - 0.5) * 15,
+                    y: (Math.random() - 0.5) * 15
                 };
                 this.alpha = 1;
-                this.decay = Math.random() * 0.02 + 0.01;
-                this.size = Math.random() * 4 + 1;
+                this.decay = Math.random() * 0.015 + 0.01;
+                this.size = Math.random() * 5 + 1;
                 this.gravity = 0.05;
-                this.friction = 0.98;
+                this.friction = 0.97;
+                this.wind = (Math.random() - 0.5) * 0.02;
             }
             
             update() {
                 this.velocity.x *= this.friction;
                 this.velocity.y *= this.friction;
                 this.velocity.y += this.gravity;
+                this.velocity.x += this.wind;
                 this.x += this.velocity.x;
                 this.y += this.velocity.y;
                 this.alpha -= this.decay;
+                this.size *= 0.99;
             }
             
             draw() {
@@ -578,7 +675,7 @@
                 ctx.fill();
                 
                 // 添加光晕效果
-                ctx.shadowBlur = 15;
+                ctx.shadowBlur = 20;
                 ctx.shadowColor = this.color;
                 ctx.fill();
                 ctx.restore();
@@ -587,19 +684,118 @@
         
         // 烟花类
         class Firework {
-            constructor(x, y, isCentral = false) {
+            constructor(x, y, isSpecial = false, specialType = '') {
                 this.x = x;
                 this.y = y;
                 this.color = colors[Math.floor(Math.random() * colors.length)];
-                this.particleCount = isCentral ? 250 : 120;
+                this.particleCount = isSpecial ? 300 : 150;
                 this.particles = [];
+                this.isSpecial = isSpecial;
+                this.specialType = specialType;
                 this.createParticles();
             }
             
             createParticles() {
+                if (this.isSpecial && this.specialType === 'star') {
+                    this.createStarParticles();
+                } else if (this.isSpecial && this.specialType === 'heart') {
+                    this.createHeartParticles();
+                } else if (this.isSpecial && this.specialType === '2026') {
+                    this.create2026Particles();
+                } else {
+                    this.createNormalParticles();
+                }
+            }
+            
+            createNormalParticles() {
                 for (let i = 0; i < this.particleCount; i++) {
                     this.particles.push(new Particle(this.x, this.y, this.color));
                 }
+            }
+            
+            createStarParticles() {
+                // 创建星星形状的粒子
+                for (let i = 0; i < this.particleCount; i++) {
+                    const angle = Math.PI * 2 * i / this.particleCount;
+                    const radius = 5 * Math.sqrt(i);
+                    const starX = radius * Math.cos(angle * 5) * Math.cos(angle);
+                    const starY = radius * Math.cos(angle * 5) * Math.sin(angle);
+                    
+                    const particle = new Particle(this.x, this.y, '#FFD700');
+                    particle.x = this.x + starX * 2;
+                    particle.y = this.y + starY * 2;
+                    particle.velocity.x = starX * 0.15;
+                    particle.velocity.y = starY * 0.15;
+                    particle.size = 2 + Math.random() * 3;
+                    
+                    this.particles.push(particle);
+                }
+            }
+            
+            createHeartParticles() {
+                // 创建心形粒子
+                for (let i = 0; i < this.particleCount; i++) {
+                    const angle = Math.PI * 2 * i / this.particleCount;
+                    const t = angle;
+                    // 心形参数方程
+                    const heartX = 16 * Math.pow(Math.sin(t), 3);
+                    const heartY = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
+                    
+                    const particle = new Particle(this.x, this.y, '#FF1493');
+                    particle.x = this.x + heartX * 2;
+                    particle.y = this.y + heartY * 2;
+                    particle.velocity.x = heartX * 0.2;
+                    particle.velocity.y = heartY * 0.2;
+                    particle.size = 2 + Math.random() * 2;
+                    
+                    this.particles.push(particle);
+                }
+            }
+            
+            create2026Particles() {
+                // 创建"2026"形状的粒子
+                const points = this.get2026Points();
+                for (let i = 0; i < points.length; i++) {
+                    const point = points[i];
+                    const particle = new Particle(this.x + point.x * 30, this.y + point.y * 30, colors[i % colors.length]);
+                    particle.velocity.x = (Math.random() - 0.5) * 10;
+                    particle.velocity.y = (Math.random() - 0.5) * 10;
+                    particle.size = 3 + Math.random() * 3;
+                    this.particles.push(particle);
+                }
+            }
+            
+            get2026Points() {
+                // 简化的2026点阵
+                const points = [];
+                // 数字2
+                for (let i = -3; i <= 3; i++) points.push({x: i, y: -4});
+                for (let i = -3; i <= 0; i++) points.push({x: 3, y: i});
+                for (let i = -4; i <= 4; i++) points.push({x: i, y: 0});
+                for (let i = 0; i <= 3; i++) points.push({x: -3, y: i});
+                for (let i = -3; i <= 3; i++) points.push({x: i, y: 4});
+                
+                // 数字0 (第一个)
+                for (let i = -3; i <= 3; i++) points.push({x: i+8, y: -4});
+                for (let i = -3; i <= 3; i++) points.push({x: i+8, y: 4});
+                for (let i = -3; i <= 3; i++) points.push({x: 5, y: i});
+                for (let i = -3; i <= 3; i++) points.push({x: 11, y: i});
+                
+                // 数字2 (第二个)
+                for (let i = -3; i <= 3; i++) points.push({x: i+16, y: -4});
+                for (let i = -3; i <= 0; i++) points.push({x: 19, y: i});
+                for (let i = -4; i <= 4; i++) points.push({x: i+16, y: 0});
+                for (let i = 0; i <= 3; i++) points.push({x: 13, y: i});
+                for (let i = -3; i <= 3; i++) points.push({x: i+16, y: 4});
+                
+                // 数字6
+                for (let i = -3; i <= 3; i++) points.push({x: i+24, y: -4});
+                for (let i = -3; i <= 3; i++) points.push({x: i+24, y: 0});
+                for (let i = -3; i <= 3; i++) points.push({x: i+24, y: 4});
+                for (let i = -3; i <= 3; i++) points.push({x: 21, y: i});
+                for (let i = 0; i <= 3; i++) points.push({x: 27, y: i});
+                
+                return points;
             }
             
             update() {
@@ -626,16 +822,22 @@
         // 创建随机位置的烟花
         function createRandomFirework() {
             const x = Math.random() * canvas.width;
-            const y = Math.random() * canvas.height * 0.6;
+            const y = Math.random() * canvas.height * 0.7;
             fireworks.push(new Firework(x, y));
         }
         
         // 创建多个烟花
-        function createFireworks(count) {
+        function createFireworks(count, isSpecial = false, specialType = '') {
             for (let i = 0; i < count; i++) {
                 setTimeout(() => {
-                    createRandomFirework();
-                }, i * 100);
+                    if (isSpecial) {
+                        const x = canvas.width / 2 + (Math.random() - 0.5) * 200;
+                        const y = canvas.height / 2 + (Math.random() - 0.5) * 100;
+                        fireworks.push(new Firework(x, y, true, specialType));
+                    } else {
+                        createRandomFirework();
+                    }
+                }, i * 150);
             }
         }
         
@@ -643,95 +845,12 @@
         function createCentralFirework() {
             const x = canvas.width / 2;
             const y = canvas.height / 2;
-            fireworks.push(new Firework(x, y, true));
+            fireworks.push(new Firework(x, y, true, '2026'));
             
-            // 同时创建周围的小烟花
-            setTimeout(() => createFireworks(6), 300);
-            setTimeout(() => createFireworks(5), 600);
-        }
-        
-        // 创建心形烟花
-        function createHeartFirework() {
-            const x = canvas.width / 2;
-            const y = canvas.height / 2;
-            const heartFirework = new Firework(x, y);
-            heartFirework.particleCount = 200;
-            heartFirework.particles = [];
-            
-            // 创建心形粒子分布
-            for (let i = 0; i < heartFirework.particleCount; i++) {
-                const angle = Math.PI * 2 * i / heartFirework.particleCount;
-                const t = angle;
-                // 心形参数方程
-                const heartX = 16 * Math.pow(Math.sin(t), 3);
-                const heartY = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
-                
-                const particle = new Particle(x, y, '#FF4081');
-                particle.x = x + heartX * 3;
-                particle.y = y + heartY * 3;
-                particle.velocity.x = heartX * 0.2;
-                particle.velocity.y = heartY * 0.2;
-                
-                heartFirework.particles.push(particle);
-            }
-            
-            fireworks.push(heartFirework);
-        }
-        
-        // 创建太阳花烟花
-        function createSunflowerFirework() {
-            const x = canvas.width / 2;
-            const y = canvas.height / 2;
-            const sunflowerFirework = new Firework(x, y);
-            sunflowerFirework.particleCount = 180;
-            sunflowerFirework.particles = [];
-            
-            // 创建太阳花粒子分布
-            for (let i = 0; i < sunflowerFirework.particleCount; i++) {
-                const angle = Math.PI * 2 * i / sunflowerFirework.particleCount;
-                const radius = 5 * Math.sqrt(i);
-                const petalX = radius * Math.cos(angle);
-                const petalY = radius * Math.sin(angle);
-                
-                const particle = new Particle(x, y, '#FFD700');
-                particle.x = x + petalX;
-                particle.y = y + petalY;
-                particle.velocity.x = petalX * 0.1;
-                particle.velocity.y = petalY * 0.1;
-                particle.size = 2 + Math.random() * 3;
-                
-                sunflowerFirework.particles.push(particle);
-            }
-            
-            fireworks.push(sunflowerFirework);
-        }
-        
-        // 创建四叶草烟花
-        function createCloverFirework() {
-            const x = canvas.width / 2;
-            const y = canvas.height / 2;
-            const cloverFirework = new Firework(x, y);
-            cloverFirework.particleCount = 160;
-            cloverFirework.particles = [];
-            
-            // 创建四叶草粒子分布
-            for (let i = 0; i < cloverFirework.particleCount; i++) {
-                const angle = Math.PI * 2 * i / cloverFirework.particleCount;
-                const radius = 4 * Math.sqrt(i);
-                const cloverX = radius * Math.cos(2*angle) * Math.cos(angle);
-                const cloverY = radius * Math.cos(2*angle) * Math.sin(angle);
-                
-                const particle = new Particle(x, y, '#4CAF50');
-                particle.x = x + cloverX * 3;
-                particle.y = y + cloverY * 3;
-                particle.velocity.x = cloverX * 0.15;
-                particle.velocity.y = cloverY * 0.15;
-                particle.size = 1.5 + Math.random() * 2.5;
-                
-                cloverFirework.particles.push(particle);
-            }
-            
-            fireworks.push(cloverFirework);
+            // 创建特殊形状烟花
+            setTimeout(() => createFireworks(3, true, 'star'), 500);
+            setTimeout(() => createFireworks(3, true, 'heart'), 1000);
+            setTimeout(() => createFireworks(5, false), 1500);
         }
         
         // 动画循环
@@ -740,7 +859,7 @@
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             
             // 绘制克莱因蓝背景
-            ctx.fillStyle = 'rgba(0, 47, 167, 0.1)';
+            ctx.fillStyle = 'rgba(0, 47, 167, 0.05)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             
             // 更新和绘制所有烟花
@@ -765,19 +884,25 @@
             isCountdownActive = true;
             countdownValue = 6;
             blessingEl.style.display = 'none';
+            countdownEl.style.display = 'block';
             
             const countdownInterval = setInterval(() => {
                 countdownEl.textContent = countdownValue;
                 
                 // 添加动画效果
-                countdownEl.style.transform = 'scale(1.3)';
+                countdownEl.style.transform = 'scale(1.5)';
                 setTimeout(() => {
                     countdownEl.style.transform = 'scale(1)';
-                }, 200);
+                }, 300);
                 
-                // 创建小烟花效果
+                // 根据倒计时数值创建不同效果
                 if (countdownValue > 0 && countdownValue < 7) {
-                    createRandomFirework();
+                    // 倒计时最后3秒创建更多烟花
+                    if (countdownValue <= 3) {
+                        createFireworks(2);
+                    } else {
+                        createRandomFirework();
+                    }
                 }
                 
                 // 倒计时结束
@@ -793,11 +918,6 @@
                         // 创建中央大型烟花
                         createCentralFirework();
                         
-                        // 创建特殊烟花
-                        setTimeout(() => createHeartFirework(), 800);
-                        setTimeout(() => createSunflowerFirework(), 1600);
-                        setTimeout(() => createCloverFirework(), 2400);
-                        
                         isCountdownActive = false;
                     }, 800);
                 }
@@ -808,21 +928,32 @@
         
         // 页面加载后开始倒计时
         window.addEventListener('load', () => {
+            createStarBackground();
+            createSnowflakes();
+            
             // 延迟开始，让页面先加载
-            setTimeout(startCountdown, 1000);
+            setTimeout(startCountdown, 1500);
+            
+            // 初始烟花效果
+            setTimeout(() => createFireworks(2), 500);
         });
         
         // 更多烟花按钮
         fireworksBtn.addEventListener('click', () => {
-            createFireworks(3);
+            createFireworks(5);
+            
+            // 随机创建特殊烟花
+            const specialTypes = ['star', 'heart'];
+            const randomType = specialTypes[Math.floor(Math.random() * specialTypes.length)];
+            createFireworks(1, true, randomType);
         });
         
         // 自动随机生成一些烟花（在倒计时期间）
         setInterval(() => {
-            if (Math.random() > 0.8 && isCountdownActive) {
+            if (Math.random() > 0.7 && isCountdownActive) {
                 createRandomFirework();
             }
-        }, 1200);
+        }, 1500);
         
         // 点击屏幕任何位置也可以生成烟花
         canvas.addEventListener('click', (e) => {
@@ -837,7 +968,8 @@
         // 添加键盘快捷键支持
         document.addEventListener('keydown', (e) => {
             if (e.code === 'Space' || e.key === ' ') {
-                createFireworks(2);
+                createFireworks(3);
+                e.preventDefault();
             }
         });
     </script>
